@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="hotcss" content="initial-dpr=1">
+    <title>发布需求</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/hotcss.js"></script>
+</head>
+<body>
+    <p class="head-title-white">发布需求<i class="head-return-blue"></i></p>
+    <!-- 分类 -->
+    <div class="kindbox" id="app2">
+        <div class="classify-box">
+            <span class="J_tabClassify" v-text="stairText"></span>
+            <i class="big-tringle"></i>
+            <span class="J_kindtwo" ref="toTwo" @click="toTwo" :class="{ active: !isActive }">分类二<i class="classify-tringle"></i></span>
+            <i class="big-tringle"></i>
+            <span class="J_kindthree" ref="toThree" @click="toThree" :class="{ active: isActive }">分类二<i class="classify-tringle"></i></span>
+        </div>
+        <div class="c_two" v-show="toggle">
+            <div class="demand-box classify-two" v-for="(item,index) in itemList.data" :data-id="item.value" :class="{ block:item.value==classifyId}">
+                <span v-for="(v,index2) in item.children" :data-id="index2" v-text="v.text" @click="intoThree(index2)" :class="{ active:index2==current}"></span> 
+            </div>
+        </div>   
+        <div class="c_three" v-show="!toggle">
+            <div class="c_three_item" v-for="(item,index) in itemList.data" :data-id="item.value" :class="{ block:item.value==classifyId}">
+                <div class="demand-box classify-three" v-for="(v,index2) in item.children" :data-id="index2" :class="{ block:index2==current}">
+                    <span v-for="(s,index3) in v.children">
+                        <input type="checkbox" :id="s.value" :value="s.text" v-model="checkedNames">
+                        <label :for="s.value" v-text="s.text" :class="{'active':s.checked}" @click="selectChecked(s)"></label>
+                    </span>                
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 用户信息 -->
+    <div class="demand-box" id="app4">
+        <ul class="person-message">
+            <li class="person-name"><input type="text" value="黄志雄"></li>
+            <li class="person-tel"><input type="text" value="13641243628"></li>
+            <li class="person-address"><input id="currentTpos" type="text" @click="toAdress" readonly :value="indexPosText"><span class="per-tringle"></span></li>
+            <li class="person-time"><input id="demo2" type="text" readonly="" name="input_date" placeholder="预约时间" data-lcalendar="2010-01-11,2019-12-31" /><span class="per-tringle"></span></li>
+        </ul>
+        <div class="router-site" v-show="addressState">
+            <p class="head-title-border flex">
+                <input class="detailed-add" type="text" placeholder="详细地址" id="pickerInput">
+                <button class="detailed-cancel" @click="addressState=!addressState">取消</button>
+            </p>
+            <p class="detail-address" id="detail_add"></p>
+            <div id="container"></div>
+            <button class="confirm-address" @click="confirmAddress">确定</button>
+        </div>   
+    </div>
+    <!-- 描述状况 -->
+    <div class="demand-box pb_20">
+        <p class="demand-title"><span class="link-setting"></span>这里可以填写具体描述</p>
+        <div contenteditable="true" class="message-edit"></div>
+    </div>
+    <!-- 上传图片 -->
+    <div id="picupload">
+        <div class="demand-box pb_20">
+            <input @change="fileChange($event)" type="file" id="upload_file" multiple style="display: none"/>
+            <p class="demand-title"><span class="link-photo"></span>上传图片</p>
+            <div class="upload-box">
+                <span class="upload-add" @click="fileClick"></span>
+                <div class="upload_warp_img_div" v-for="(item,index) of imgList">
+                    <div class="upload_warp_img_div_top">
+                        <div class="upload_warp_img_div_text">
+                          {{item.file.name}}
+                        </div>
+                        <img src="img/del.png" class="upload_warp_img_div_del" @click="fileDel(index)">
+                    </div>
+                    <img :src="item.file.src" :class="{'thisPic':item.checked}" @click="enlargePic(item)">
+                </div>
+            </div>
+        </div>
+        <img :src="imgSrc" alt="" class="bigImg" :class="{ none: !picShow }">
+        <div class="alert-layer" v-if="picShow" @click="hideLayer"></div> 
+    </div>    
+    <div class="login-button m0auto">
+        <button>提交需求</button>
+    </div>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<!-- vue获取数据 -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource"></script>
+<script type="text/javascript" src="js/vuepage.js"></script>
+<!-- 上传图片 -->
+<script type="text/javascript" src="js/upload-pic.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.2&key=08b601410cf417fe708c65ddc9f30221"></script>
+<script src="http://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+<script type="text/javascript" src="js/site-address.js"></script>
+</body>
+</html>

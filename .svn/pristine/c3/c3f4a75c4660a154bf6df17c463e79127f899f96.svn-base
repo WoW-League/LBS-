@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="hotcss" content="initial-dpr=1">
+    <title>投诉</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/hotcss.js"></script>
+</head>
+<body>
+    <p class="head-title-white mb_22">投诉<i class="head-return-blue"></i></p>
+    <div class="demand-box complaint-box">
+        <ul>
+            <li><label for="reason1"><input id="reason1" name="reason" type="radio">原因1</label></li>
+            <li><label for="reason2"><input id="reason2" name="reason" type="radio">原因2</label></li>
+            <li><label for="reason3"><input id="reason3" name="reason" type="radio">原因3</label></li>
+        </ul>
+    </div>
+    <div class="demand-box pb_20">
+        <p class="demand-title"><span class="link-reason"></span>这里可以填写具体原因</p>
+        <div contenteditable="true" class="message-edit"></div>
+    </div>
+    <div class="demand-box pb_20">
+        <p class="demand-title"><span class="link-photo"></span>上传图片</p>
+        <div class="upload-box">
+            <span class="upload-add"></span>
+        </div>
+    </div>
+    <div class="login-button m0auto">
+        <button>确定投诉</button>
+    </div>  
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/*
+Error: File to import not found or unreadable: ../src/px2rem.scss.
+       Load path: F:/LBS/css
+        on line 2 of css/index.scss
+
+1: @charset "utf-8";
+2: @import '../src/px2rem.scss';
+3: $designWidth : 640; 
+4: /*  
+5: * @description: 手机登录注册页面
+6: * @author: huangzhixiong
+7: * @update:(2017-12-04)  
+
+Backtrace:
+css/index.scss:2
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:67:in `rescue in import'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:45:in `import'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:28:in `imported_file'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/import_node.rb:37:in `css_import?'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/stack.rb:79:in `block in with_base'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/stack.rb:135:in `with_frame'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/stack.rb:79:in `with_base'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:162:in `visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `map'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:161:in `visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:10:in `visit'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/root_node.rb:36:in `css_tree'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/engine.rb:307:in `render_with_sourcemap'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:209:in `each'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/plugin/compiler.rb:294:in `watch'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/plugin.rb:109:in `method_missing'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/exec/sass_scss.rb:360:in `watch_or_update'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/exec/sass_scss.rb:51:in `process_result'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/exec/base.rb:52:in `parse'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/lib/sass/exec/base.rb:19:in `parse!'
+F:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.5.3/bin/sass:13:in `<top (required)>'
+F:/Ruby22/bin/sass:23:in `load'
+F:/Ruby22/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ../src/px2rem.scss.\A        Load path: F:/LBS/css\A         on line 2 of css/index.scss\A \A 1: @charset \"utf-8\";\A 2: @import '../src/px2rem.scss';\A 3: $designWidth : 640; \A 4: /*  \A 5: * @description: 手机登录注册页面\A 6: * @author: huangzhixiong\A 7: * @update:(2017-12-04)  "; }

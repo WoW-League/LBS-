@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="hotcss" content="initial-dpr=1">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/hotcss.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<!-- 头部 -->
+    <div class="index-head" id="topNavh">
+        <i class="head-icon icon-person"></i>
+        <span class="head-location" id="currentPos"></span>
+        <i class="head-icon icon-message"></i>
+    </div>
+<!-- 地图 -->    
+    <div id="container" style="font-size: 0.65rem;"></div>
+<!-- 底部导航 -->    
+    <div class="foot-nav" id="app1">
+        <dl v-for="(item,index) in itemList.data" :data-id="item.service_items_id" @click="jumpTwo(item.service_items_id,item.service_items_title)">
+            <dt><img :src="item.service_items_img" alt=""></dt>
+            <dd v-text="item.service_items_title"></dd>
+        </dl>
+    </div>
+    <p class="indexPos none"></p>  
+</div>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource"></script>
+<script type="text/javascript" src="js/vuepage.js"></script>
+<!-- 腾讯地图 -->
+<!-- drawing 绘图工具库，用于在地图上方绘制折线、多边形、圆等几何图形；
+geometry 几何运算库，用于计算地球表面的距离、面积等；
+autocomplete 文本输入提示库，用于快速帮助用户完成检索关键词输入；
+convertor 坐标转换库，将标准经纬度或其它地图API经纬度转换为腾讯经纬度坐标系。 -->
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=XM5BZ-4G6LF-BNNJ3-NI5NG-QQNQE-ZQF4X&libraries=convertor"></script>
+<script type="text/javascript" src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+    function getById(id){
+        return document.getElementById(id);
+    }
+    var geolocation = new qq.maps.Geolocation("XM5BZ-4G6LF-BNNJ3-NI5NG-QQNQE-ZQF4X", "myapp");
+    var options = {timeout: 9000};
+    var positionNum = 0;
+
+    // 设置地图的高度
+    var topNavh = getById('topNavh');
+    var app1 = getById('app1');
+    var container = getById('container');
+    var currentCity = getById('currentPos');
+        container.style.height = document.body.clientHeight-(topNavh.offsetHeight+app1.offsetHeight)+'px';
+    function showPosition(position) {
+        console.log(position);
+        currentCity.innerHTML = position.city
+        var center = new qq.maps.LatLng(position.lat, position.lng);
+        var map = new qq.maps.Map(document.getElementById("container"),{
+            center: center,
+            zoom: 15,
+            disableDefaultUI: true
+        });
+        var marker = new qq.maps.Marker({
+            position: center,
+            map: map
+        });
+         var anchor = new qq.maps.Point(12, 35),
+            size = new qq.maps.Size(24, 35),
+            origin = new qq.maps.Point(0, 0),
+            markerIcon = new qq.maps.MarkerImage("../img/location1.svg",size, origin,anchor);
+            marker.setIcon(markerIcon);
+    };
+    function showErr() {
+        document.getElementById("container").appendChild(document.createElement('p')).innerHTML = "定位失败！";
+    };
+    geolocation.getLocation(showPosition, showErr, options);
+
+    
+}
+</script>
+</body>
+</html>

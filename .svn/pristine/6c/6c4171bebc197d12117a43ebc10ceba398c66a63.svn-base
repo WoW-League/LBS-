@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="hotcss" content="initial-dpr=1">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/hotcss.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="index-head">
+        <i class="head-icon icon-person"></i>
+        <span class="head-location" id="currentPos"></span>
+        <i class="head-icon icon-message"></i>
+    </div>
+    <div id="container"></div>
+    <div class="foot-nav">
+        <dl>
+            <dt class="circle-riding"></dt>
+            <dd>骑行</dd>
+        </dl>
+        <dl>
+            <dt class="circle-energy"></dt>
+            <dd>水暖电</dd>
+        </dl>
+        <dl>
+            <dt class="circle-hhome"></dt>
+            <dd>家居</dd>
+        </dl>
+        <dl>
+            <dt class="circle-unlock"></dt>
+            <dd>开锁</dd>
+        </dl>
+    </div>  
+</div>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.2&key=08b601410cf417fe708c65ddc9f30221"></script>
+<!-- UI组件库 1.0 -->
+<script src="http://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+<script type="text/javascript" src="js/index-address.js"></script>
+</body>
+</html>

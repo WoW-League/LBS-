@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="hotcss" content="initial-dpr=1">
+    <title>分享二维码</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/hotcss.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="character-wrap">
+        <p class="head-title">我的二维码</p>
+    </div>
+    <div class="logo-wave"></div>
+    <img class="my-qrCode" src="http://qr.liantu.com/api.php?text=http://app.lanbanshou.com/SSMDemo/register-downloadapp.html?r_tel=17688399806" alt="">
+    <p class="scan-text">扫描<span>13641243628</span>二维码进行注册</p>
+</div>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var codeUrl = 'http://qr.liantu.com/api.php?text=http://app.lanbanshou.com/SSMDemo/register-downloadapp.html?r_tel=';
+        $('.my-qrCode').attr('src',)
+    })
+</script>
+</body>
+</html>

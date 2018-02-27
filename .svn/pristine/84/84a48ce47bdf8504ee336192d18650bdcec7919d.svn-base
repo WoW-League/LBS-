@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta name="hotcss" content="initial-dpr=1">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/hotcss.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="character-wrap">
+        <p class="head-title">注册<i class="head-return"></i></p>
+    </div>
+    <img class="logo-wave" src="img/logo-wave.jpg">
+    <ul id="box" class="login-form">
+        <li class="input-phone"><input placeholder="请输入手机号" type="text"></li>
+        <li class="input-shield"><input placeholder="请输入验证码" type="text" id='checkCode'><button class="send-auth" id='btnSendCode' onclick='sendMessage()' >发送验证码</button></li>
+        <li class="input-lock"><input placeholder="请设置登录密码" type="text" id='pwd'></li>
+    </ul>
+    <p class="user-agreement">*注册即代表您同意<a href="javascript:;">《蓝扳手用户协议》</a></p>
+    <div class="login-button register-bottom">
+        <button id='reg' onclick="registry()">确认注册</button>
+        <p><a href="javascript:;">已有账号，去登录></a></p>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+var InterValObj; //timer变量，控制时间
+var count = 60; //间隔函数，1秒执行  
+var curCount; //当前剩余秒数  
+//发送短信
+function sendMessage() {
+	curCount = count;
+	var phone = $("#phone").val(); //手机号码  
+	if (phone != "") {
+		//设置button效果，开始计时  
+		$("#btnSendCode").attr("disabled", "true");
+		$("#btnSendCode").val("请在" + curCount + "秒内输入验证码");
+		InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+		var serialize="phone="+phone +"&type=1";
+		//向后台发送处理数据  
+		$.ajax({
+        url: 'http://query.yahooapis.com/v1/public/yql',
+        dataType: 'jsonp',
+        data: {
+            q: "select * from json where url=\"http://lbs.lanbanshou.com/index.php/api/sms/sendMessage?"+serialize+"\"",
+            format: "json"
+        },
+        success: function (d) {
+           alert(d.query.results.json.msg);
+        }
+    	});
+	} else {
+		alert("手机号码不能为空！");
+	}
+}//timer处理函数
+function SetRemainTime() {  
+    if (curCount == 0) {                  
+        window.clearInterval(InterValObj);//停止计时器  
+        $("#btnSendCode").removeAttr("disabled");//启用按钮  
+        $("#btnSendCode").val("重新发送验证码");  
+    }  
+    else {  
+        curCount--;  
+        $("#btnSendCode").text("请在" + curCount + "秒内输入验证码");  
+    }  
+}
+//注册
+function registry(){
+	var phone = $("#phone").val(); //手机号码  
+	var pwd=$('#pwd').val();//密码
+	var captcha=$('#checkCode').val();
+	var serialize="phone=" + phone + "&captcha=" + captcha+"&pwd="+pwd;
+		$.ajax({
+        url: 'http://query.yahooapis.com/v1/public/yql',
+        dataType: 'jsonp',
+        data: {
+            q: "select * from json where url=\"http://lbs.hxcsjt.com/index.php/api/user/userRegister?"+serialize+"\"",
+            format: "json"
+        },
+        success: function (d) {
+           alert(d.query.results.json.msg);
+        }
+    });
+}
+</script>
+</body>
+</html>
